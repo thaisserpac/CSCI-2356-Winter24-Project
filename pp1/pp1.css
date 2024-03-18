@@ -37,7 +37,7 @@ ul {
     padding: 0;
     list-style: none;
     overflow: hidden;
-    background-color: darkblue;
+    background-color: rgb(17 202 240);
 }
 
     ul:hover {
