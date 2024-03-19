@@ -1,3 +1,13 @@
+
+/* 
+    The purpose of this JavaScript file is
+    to establish certain parameters for user input,
+    as well as adding function to our audio buttons.
+
+    author: Adam Rossi (Group leader), Jan Zubalski,
+            Thais Serpa Chaves, Jack Aroyan
+*/
+
 function phoneNumberFormat(){
     // setting the inputField to the contact-info input
     const inputField = document.getElementById('contact_info');
@@ -9,6 +19,7 @@ function phoneNumberFormat(){
     inputField.value = modifiedInputField;
     inputField2.value = modifiedInputField2;
 }
+
 function modifiedPhoneNumber(value){
     // if user deletes the input
     if (!value) return value;
