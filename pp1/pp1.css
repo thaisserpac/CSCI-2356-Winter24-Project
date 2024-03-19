@@ -1,3 +1,14 @@
+
+/*
+    The purpose of this file is to add some basic,
+    and some neccessary style to make our web page
+    readable for all group members. 
+ 
+    author: Adam Rossi (Group leader), Jan Zubalski,
+            Thais Serpa Chaves, Jack Aroyan
+*/
+
+/* General text style */
 body {
     font-family: 'Calibri', Arial, sans-serif;
     font-size: 20px;
@@ -7,6 +18,8 @@ body {
     background-color: white; 
 }
 
+/* Differentiating the form with
+    the rest of the web page */
 section {
     margin-bottom: 20px;
     background-color: whitesmoke; 
@@ -16,13 +29,15 @@ section {
     box-sizing: border-box;
 }
 
+/* Form text style */
 form {
     display: flex;
     flex-direction: column;
 }
 
+/* Textbox width */
 #full_name {
-    width: 30%; 
+    width:30%; 
 }
 
 /* Option to mess with submit button style */
