@@ -133,7 +133,6 @@
             <h3>Natural Burial Options:</h3>
             <form id="nb-options-form">
 
-
                 <legend>
                     <!-- listen button -->
                     <button type="button" class="btn btn-info" onclick="playRecording(4)">
@@ -143,8 +142,10 @@
                                   d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
                         </svg>
                     </button>
-                    Do you want a full or partial burial?
+                    <!-- label for the first prompt under the natural burial options -->
+                    <label for ="burial-type">Do you want a full or partial burial?</label>
                 </legend>
+                    <!-- input tag type radio for radio buttons beside the prompt response options -->
                 <label><input type="radio" name="burial-type" value="full"> Full</label>
                 <label><input type="radio" name="burial-type" value="partial"> Partial</label><br>
 
@@ -157,8 +158,10 @@
                                   d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
                         </svg>
                     </button>
-                    Where would you like to be buried?
+                    <!-- label for the second prompt under the natural burial options -->
+                    <label for ="burial-area">Where would you like to be buried?</label>
                 </legend>
+                    <!-- input tag type radio for radio buttons beside the prompt response options -->
                 <label><input type="radio" name="burial-area" value="inField"> In a field</label>
                 <label><input type="radio" name="burial-area" value="byWater"> By the water</label>
                 <label><input type="radio" name="burial-area" value="withFamily"> With family</label>
@@ -173,8 +176,10 @@
                                   d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
                         </svg>
                     </button>
-                    What is your preferred casket material?
+                    <!-- label for the third prompt under the natural burial options -->
+                    <label for ="casket-material">What is your preferred casket material?</label>
                 </legend>
+                    <!-- input tag type radio for radio buttons beside the prompt response options -->
                 <label><input type="radio" name="casket-material" value="willow"> Willow</label>
                 <label><input type="radio" name="casket-material" value="cloth"> Cloth</label>
                 <label><input type="radio" name="casket-material" value="bamboo"> Bamboo</label>
@@ -189,8 +194,10 @@
                                   d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
                         </svg>
                     </button>
-                    Which available marker option would you like?
+                    <!-- label for the fourth prompt under the natural burial options -->
+                    <label for ="marker-option">Which available marker option would you like?</label>
                 </legend>
+                    <!-- input tag type radio for radio buttons beside the prompt response options -->
                 <label><input type="radio" name="marker-option" value="stones"> Arrangement of Stones</label>
                 <label><input type="radio" name="marker-option" value="boulder"> Engraved Boulder</label>
                 <label><input type="radio" name="marker-option" value="wood"> Engraved Wood</label>
@@ -205,8 +212,10 @@
                                   d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
                         </svg>
                     </button>
-                    Do you want a plant to grow?
+                    <!-- label for the fifth prompt under the natural burial options -->
+                    <label for ="plant-option">Do you want a plant to grow?</label>
                 </legend>
+                    <!-- input tag type radio for radio buttons beside the prompt response options -->
                 <label><input type="radio" name="plant-option" value="yes"> Yes</label>
                 <label><input type="radio" name="plant-option" value="no"> No</label><br>
 
@@ -219,10 +228,11 @@
                                   d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
                         </svg>
                     </button>
-                    Do you want GPS?
+                    <!-- label for the sixth prompt under the natural burial options -->
+                    <label for ="gps-option">Do you want GPS?</label>
                 </legend>
+                    <!-- input tag type radio for radio buttons beside the prompt response options -->
                 <label><input type="radio" name="gps-option" value="yes"> Yes</label>
                 <label><input type="radio" name="gps-option" value="no"> No</label><br>
-
 
             </form>
