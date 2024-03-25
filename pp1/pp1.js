@@ -8,6 +8,14 @@
             Thais Serpa Chaves, Jack Aroyan
 */
 
+function lightMode() {
+
+}
+
+function darkMode() {
+
+}
+
 function phoneNumberFormat(){
     // setting the inputField to the contact-info input
     const inputField = document.getElementById('contact_info');
