@@ -68,7 +68,7 @@ function playRecording(id) {
         audioFile = 'Recordings/emailAddress.mp3';
         console.log("Playing recording 5");
     } else if (id === 6) {
-        audioFile = 'Recordings/fullOrPartial;.mp3';
+        audioFile = 'Recordings/fullOrPartial.mp3';
         console.log("Playing recording 6");
     } else if (id === 7) {
         audioFile = 'Recordings/burialLocation.mp3';
