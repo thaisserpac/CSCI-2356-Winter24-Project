@@ -51,38 +51,39 @@ function modifiedPhoneNumber(value){
 }
 
 function playRecording(id) {
-    if (id === 0) {
-        let fullName = new Audio('full name.m4a');
-	fullName.play();
+    let audioFile;
+    if (id === 1) {
+        audioFile = 'Recordings/fullName.mp3';
         console.log("Playing recording 1");
-    } else if (id === 1) {
-        // Code to play recording 2
-        console.log("Playing recording 2");
     } else if (id === 2) {
-        // Code to play recording 3
-        console.log("Playing recording 3");
+        audioFile = 'Recordings/dob.mp3';
+        console.log("Playing recording 2");
     } else if (id === 3) {
-        // Code to play recording 4
-        console.log("Playing recording 4");
+        audioFile = 'Recordings/phoneNumber.mp3';
+        console.log("Playing recording 3");
     } else if (id === 4) {
-        // Code to play recording 5
-        console.log("Playing recording 5");
+        audioFile = 'Recordings/relativesPhone.mp3';
+        console.log("Playing recording 4");
     } else if (id === 5) {
-        // Code to play recording 6
-        console.log("Playing recording 6");
+        audioFile = 'Recordings/emailAddress.mp3';
+        console.log("Playing recording 5");
     } else if (id === 6) {
-        // Code to play recording 7
-        console.log("Playing recording 7");
+        audioFile = 'Recordings/fullOrPartial;.mp3';
+        console.log("Playing recording 6");
     } else if (id === 7) {
-        // Code to play recording 8
-        console.log("Playing recording 8");
+        audioFile = 'Recordings/burialLocation.mp3';
+        console.log("Playing recording 7");
     } else if (id === 8) {
-        // Code to play recording 9
-        console.log("Playing recording 9");
+        audioFile = 'Recordings/casketMaterial.mp3';
+        console.log("Playing recording 8");
     } else if (id === 9) {
-        // Code to play recording 10
-        console.log("Playing recording 10");
-    } else {
-        console.log("not working")
+        audioFile = 'Recordings/marker.mp3';
+        console.log("Playing recording 9");
     }
+
+     // Create a new Audio object with the specified audio file source
+     let audio = new Audio(audioFile);
+
+     // Play the audio
+     audio.play();
 }
