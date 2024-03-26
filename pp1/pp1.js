@@ -52,7 +52,8 @@ function modifiedPhoneNumber(value){
 
 function playRecording(id) {
     if (id === 0) {
-        // Code to play recording 1
+        let fullName = new Audio('full name.m4a');
+	fullName.play();
         console.log("Playing recording 1");
     } else if (id === 1) {
         // Code to play recording 2
