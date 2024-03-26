@@ -7,6 +7,7 @@
     author: Adam Rossi (Group leader), Jan Zubalski,
             Thais Serpa Chaves, Jack Aroyan
 */
+let voice2 = false;
 
 function lightMode() {
 
@@ -54,30 +55,57 @@ function playRecording(id) {
     let audioFile;
     if (id === 1) {
         audioFile = 'Recordings/fullName.mp3';
+        if (voice2) {
+            audioFile = 'Recordings/fullNameVoice2.mp3';
+        }
         console.log("Playing recording 1");
     } else if (id === 2) {
         audioFile = 'Recordings/dob.mp3';
+        if (voice2) {
+            audioFile = 'Recordings/dobVoice2.mp3';
+        }
         console.log("Playing recording 2");
     } else if (id === 3) {
         audioFile = 'Recordings/phoneNumber.mp3';
+        if (voice2) {
+            audioFile = 'Recordings/phoneNumberVoice2.mp3';
+        }
         console.log("Playing recording 3");
     } else if (id === 4) {
         audioFile = 'Recordings/relativesPhone.mp3';
+        if (voice2) {
+            audioFile = 'Recordings/relativesPhoneVoice2.mp3';
+        }
         console.log("Playing recording 4");
     } else if (id === 5) {
         audioFile = 'Recordings/emailAddress.mp3';
+        if (voice2) {
+            audioFile = 'Recordings/relativesPhoneVoice2.mp3';
+        }
         console.log("Playing recording 5");
     } else if (id === 6) {
         audioFile = 'Recordings/fullOrPartial.mp3';
+        if (voice2) {
+            audioFile = 'Recordings/fullOrPartialVoice2.mp3';
+        }
         console.log("Playing recording 6");
     } else if (id === 7) {
         audioFile = 'Recordings/burialLocation.mp3';
+        if (voice2) {
+            audioFile = 'Recordings/burialLocationVoice2.mp3';
+        }
         console.log("Playing recording 7");
     } else if (id === 8) {
         audioFile = 'Recordings/casketMaterial.mp3';
+        if (voice2) {
+            audioFile = 'Recordings/casketMaterialVoice2.mp3';
+        }
         console.log("Playing recording 8");
     } else if (id === 9) {
         audioFile = 'Recordings/marker.mp3';
+        if (voice2) {
+            audioFile = 'Recordings/markerVoice2.mp3';
+        }
         console.log("Playing recording 9");
     }
 
