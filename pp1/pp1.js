@@ -70,7 +70,7 @@ function modifiedPhoneNumber(value){
     // slice method is used to take the first 3 digits and return the brackets around it
     // slice method is used to take the 4th, 5th and 6th digits and return them with a dash after them
     // slice method is used again to take everything after the 6th up to 9 digits
-    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 9)}`;
+    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
 }
 // the following 2 functions are to add the dashes for the date input
 function dateFormat(){
@@ -101,7 +101,7 @@ function modifiedDateFormat(value){
     // slice method is used to take first and second digits and return the dash after them
     // slice method is used to take third and fourth digits return them with a dash after them
     // slice method is used again to take everything from the fifth digit up to 8 digits
-    return `${date.slice(0, 2)}-${date.slice(2, 4)}-${date.slice(4, 7)}`;
+    return `${date.slice(0, 2)}-${date.slice(2, 4)}-${date.slice(4, 8)}`;
 }
 
 function handleSubmitUserInfo() {
