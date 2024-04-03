@@ -143,9 +143,7 @@ function handleDisplay() {
         Burial Type: ${burialOptions.burialType}<br>
         Burial Area: ${burialOptions.burialArea}<br>
         Casket Material: ${burialOptions.casketMaterial}<br>
-        Marker Option: ${burialOptions.markerOption}<br>
-        Plant Option: ${burialOptions.plantOption}<br>
-        GPS Option: ${burialOptions.gpsOption}<br>` ;
+        Marker Option: ${burialOptions.markerOption}<br>` ;
 
 }
 
