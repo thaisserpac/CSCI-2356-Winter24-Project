@@ -8,6 +8,7 @@
             Thais Serpa Chaves, Jack Aroyan
 */
 
+
 /* General text style */
 body {
     font-family: 'Calibri', Arial, sans-serif;
@@ -18,85 +19,5 @@ body {
     background-color: white; 
 }
 
-/* Differentiating the form with
-    the rest of the web page */
-section {
-    margin-bottom: 20px;
-    background-color: whitesmoke; 
-    padding: 40px; 
-    box-shadow: 0px 0px 10px #ccc;
-    width: 80%;
-    box-sizing: border-box;
-}
 
-/* Form text style */
-form {
-    display: flex;
-    flex-direction: column;
-}
-
-/* Textbox width */
-#full_name {
-    width:30%; 
-}
-
-/* Option to mess with submit button style */
-input[type="submit"] {
-    width: 30%; 
-    
-}
-
-/* Dropdown Menu */
-ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    overflow: hidden;
-    background-color: rgb(17 202 240);
-}
-
-    ul:hover {
-        overflow: visible;
-    }
-
-li {
-    position: relative;
-    float: left;
-}
-
-
-a {
-    display: block;
-    padding: 10px 20px;
-    font-weight: bold;
-    text-decoration: none;
-    color: black;
-}
-
-/* second level */
-ul ul {
-    max-height: 0;
-    position: absolute;
-}
-
-ul li:hover ul {
-    max-height: 999px;
-}
-
-ul ul li {
-    float: none;
-}
-
-
-/* third level */
-ul ul ul {
-    position: absolute;
-    width: 0;
-    top: 0;
-    left: 100%;
-}
-
-ul ul li:hover ul {
-    width: 100%;
-}
 
