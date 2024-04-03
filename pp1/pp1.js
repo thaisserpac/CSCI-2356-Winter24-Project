@@ -1,4 +1,3 @@
-
 /* 
     The purpose of this JavaScript file is
     to establish certain parameters for user input,
@@ -8,7 +7,8 @@
             Thais Serpa Chaves, Jack Aroyan
 */
 let voice2 = false;
-
+// call function handleDisplay() when loading the browser
+window.addEventListener("load", handleDisplay);
 function lightMode() {
 
 }
@@ -16,7 +16,7 @@ function lightMode() {
 function darkMode() {
 
 }
-
+// the following 2 functions are to add the brackets and dash for the phone numbers inputs
 function phoneNumberFormat(){
     // setting the inputField to the contact-info input
     const inputField = document.getElementById('contact_info');
@@ -38,17 +38,118 @@ function modifiedPhoneNumber(value){
     const NumberLength = phoneNumber.length;
     // if the input length is less than 4 digits 
     if (NumberLength < 4) return phoneNumber;
-    // if the number is less than 7 to return the the digits with brackets around the first 3, plus the rest of the digits
-    // slice method is used to take index or digit 0, 1 and 2 and return the brackets around it
-    // slice method is used again to take everything from index 3 which is the fourth letter to the end
+    // if the number is less than 7  return the the digits with brackets around the first 3, plus the rest of the digits
+    // slice method is used to take first, second and third digits and return the brackets around it
+    // slice method is used again to take everything after third digit 
     if (NumberLength < 7) {
         return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
     }
     // if more than 7 digits return the first 3 with brackets around them, then space then 3 digits then - and the rest digits
-    // slice method is used to take index or digit 0, 1 and 2 and return the brackets around it
-    // slice method is used to take index or digit 3, 4 and 5 and return them with a dash after them
-    // slice method is used again to take everything from index 6 which is the seventh digit until the 10th digit which is index 9
-    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+    // slice method is used to take the first 3 digits and return the brackets around it
+    // slice method is used to take the 4th, 5th and 6th digits and return them with a dash after them
+    // slice method is used again to take everything after the 6th up to 9 digits
+    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 9)}`;
+}
+// the following 2 functions are to add the dashes for the date input
+function dateFormat(){
+    // setting the inputField to the birth_date input
+    const inputField = document.getElementById('birth_date');
+    // setting the inputField value to a new modified format which is explained in the next function
+    const modifiedDate = modifiedDateFormat(inputField.value);
+    // setting the modified value to the inputField value
+    inputField.value = modifiedDate;
+}
+
+function modifiedDateFormat(value){
+    // if user deletes the input
+    if (!value) return value;
+    // replacing any non-numeric input with nothing (''), this is used to clean the input so if we put letter it replaces it with nothing
+    const date = value.replace(/[^\d]/g, '');
+    // NumberLength is the length of the array
+    const NumberLength = date.length;
+    // if the input length is less than 2 digits 
+    if (NumberLength < 2) return date;
+    // if the number is less than 4 return the the digits with dash after the first 2 digits then the rest of the digits
+    // slice method is used to take index or digit 0, 1 and return the dash after them
+    // slice method is used again to take everything from index 2 which is the third digit to the rest
+    if (NumberLength < 4) {
+        return `${date.slice(0, 2)}-${date.slice(2)}`;
+    }
+    // if more than 4 digits return the first 2 then dahs then the next 2 digits then another dash then the rest of 4 numbers
+    // slice method is used to take first and second digits and return the dash after them
+    // slice method is used to take third and fourth digits return them with a dash after them
+    // slice method is used again to take everything from the fifth digit up to 8 digits
+    return `${date.slice(0, 2)}-${date.slice(2, 4)}-${date.slice(4, 7)}`;
+}
+
+function handleSubmitUserInfo() {
+    // const values are given for name & birth_date & phone numbers & email 
+    const nameInput = document.getElementById('full_name');
+    const dateInput = document.getElementById('birth_date');
+    const contactInput = document.getElementById('contact_info');
+    const relativeInput = document.getElementById('relative_number');
+    const emailInput = document.getElementById('email');
+
+    // creating object to store input values, keys are userName & date & contact & relative & email, their values are used from const above
+    const userInputValues = {
+        userName: nameInput.value,
+        date: dateInput.value,
+        contact: contactInput.value,
+        relative: relativeInput.value,
+        email: emailInput.value,  
+    }
+    // store user input values in local storage as Json string 
+    localStorage.setItem('strUserInputValues',JSON.stringify(userInputValues));
+    handleDisplay();
+    // clear input fields after submission
+    nameInput.value = '';
+    dateInput.value = '';
+    contactInput.value = '';
+    relativeInput.value = '';
+    emailInput.value = '';
+}
+
+function handleSubmitBurialChoices() {
+    // Get all selected radio button values
+    var burialType = document.querySelector('input[name="burial-type"]:checked').value;
+    var burialArea = document.querySelector('input[name="burial-area"]:checked').value;
+    var casketMaterial = document.querySelector('input[name="casket-material"]:checked').value;
+    var markerOption = document.querySelector('input[name="marker-option"]:checked').value;
+    var plantOption = document.querySelector('input[name="plant-option"]:checked').value;
+    var gpsOption = document.querySelector('input[name="gps-option"]:checked').value;
+    // Store burial options values as object
+    const burialOptions = {
+        burialType,
+        burialArea,
+        casketMaterial,
+        markerOption,
+        plantOption,
+        gpsOption
+    }
+    // store user input values in local storage as Json string 
+    localStorage.setItem('strBurialOptions',JSON.stringify(burialOptions));
+
+}
+
+// second function is to handle displaying stored input on the last div
+function handleDisplay() {
+    //  retreiving user inputs values from local storage
+    // using json.parse to change the values back from string to js object
+    userObj = JSON.parse(localStorage.getItem('strUserInputValues'));
+    burialOptions = JSON.parse(localStorage.getItem('strBurialOptions'));
+    // displaying inputs on the last div using userobj object & burialOptions object
+    document.getElementById('displayInputs').innerHTML = `User Name: ${userObj.userName}<br>
+        Date of Birth: ${userObj.date}<br> 
+        Phone Number: ${userObj.contact}<br> 
+        Relative Phone Number: ${userObj.relative}<br> 
+        Email Address: ${userObj.email}<br>
+        Burial Type: ${burialOptions.burialType}<br>
+        Burial Area: ${burialOptions.burialArea}<br>
+        Casket Material: ${burialOptions.casketMaterial}<br>
+        Marker Option: ${burialOptions.markerOption}<br>
+        Plant Option: ${burialOptions.plantOption}<br>
+        GPS Option: ${burialOptions.gpsOption}<br>` ;
+
 }
 
 function playRecording(id) {
