@@ -6,16 +6,38 @@
     author: Adam Rossi (Group leader), Jan Zubalski,
             Thais Serpa Chaves, Jack Aroyan
 */
-let voice2 = false;
+
 // call function handleDisplay() when loading the browser
 window.addEventListener("load", handleDisplay);
-function lightMode() {
 
+tailwind.config = {
+    darkMode: 'selector',
+    theme: {
+      fontFamily: {
+        sans: ['Calibri'],
+        mono: ['Courier New']
+      }
+    },
 }
 
-function darkMode() {
 
+let evenIsDarkMode = 1; // used to indicate whether the current display state
+                        // is dark mode (even) or light mode (odd)
+                        // Special note: the value of this variable is persistent
+                        //               because it has global scope
+
+function toggleDarkMode() {
+    // test whether evenIsDarkMode is an even or odd number
+    if (evenIsDarkMode % 2 == 0){
+        document.getElementById("main").classList.remove('dark');
+    } else {
+        document.getElementById("main").classList.add('dark');
+    }
+    // increment evenIsDarkMode so its even or odd value is synchronized with
+    // the current display state
+    evenIsDarkMode++;
 }
+
 // the following 2 functions are to add the brackets and dash for the phone numbers inputs
 function phoneNumberFormat(){
     // setting the inputField to the contact-info input
@@ -149,60 +171,64 @@ function handleDisplay() {
 
 function playRecording(id) {
     let audioFile;
-    if (id === 1) {
-        audioFile = 'Recordings/fullName.mp3';
-        if (voice2) {
-            audioFile = 'Recordings/fullNameVoice2.mp3';
-        }
-        console.log("Playing recording 1");
-    } else if (id === 2) {
-        audioFile = 'Recordings/dob.mp3';
-        if (voice2) {
-            audioFile = 'Recordings/dobVoice2.mp3';
-        }
-        console.log("Playing recording 2");
-    } else if (id === 3) {
-        audioFile = 'Recordings/phoneNumber.mp3';
-        if (voice2) {
-            audioFile = 'Recordings/phoneNumberVoice2.mp3';
-        }
-        console.log("Playing recording 3");
-    } else if (id === 4) {
-        audioFile = 'Recordings/relativesPhone.mp3';
-        if (voice2) {
-            audioFile = 'Recordings/relativesPhoneVoice2.mp3';
-        }
-        console.log("Playing recording 4");
-    } else if (id === 5) {
-        audioFile = 'Recordings/emailAddress.mp3';
-        if (voice2) {
-            audioFile = 'Recordings/relativesPhoneVoice2.mp3';
-        }
-        console.log("Playing recording 5");
-    } else if (id === 6) {
-        audioFile = 'Recordings/fullOrPartial.mp3';
-        if (voice2) {
-            audioFile = 'Recordings/fullOrPartialVoice2.mp3';
-        }
-        console.log("Playing recording 6");
-    } else if (id === 7) {
-        audioFile = 'Recordings/burialLocation.mp3';
-        if (voice2) {
-            audioFile = 'Recordings/burialLocationVoice2.mp3';
-        }
-        console.log("Playing recording 7");
-    } else if (id === 8) {
-        audioFile = 'Recordings/casketMaterial.mp3';
-        if (voice2) {
-            audioFile = 'Recordings/casketMaterialVoice2.mp3';
-        }
-        console.log("Playing recording 8");
-    } else if (id === 9) {
-        audioFile = 'Recordings/marker.mp3';
-        if (voice2) {
-            audioFile = 'Recordings/markerVoice2.mp3';
-        }
-        console.log("Playing recording 9");
+    switch (id) {
+        case 1:
+            audioFile = 'Recordings/fullName.mp3';
+            if (voice2) {
+                audioFile = 'Recordings/fullNameVoice2.mp3';
+            }
+            break;
+        case 2:
+            audioFile = 'Recordings/dob.mp3';
+            if (voice2) {
+                audioFile = 'Recordings/dobVoice2.mp3';
+            }
+            break;
+        case 3:
+            audioFile = 'Recordings/phoneNumber.mp3';
+            if (voice2) {
+                audioFile = 'Recordings/phoneNumberVoice2.mp3';
+            }
+            break;
+        case 4:
+            audioFile = 'Recordings/relativesPhone.mp3';
+            if (voice2) {
+                audioFile = 'Recordings/relativesPhoneVoice2.mp3';
+            }
+            break;
+        case 5:
+            audioFile = 'Recordings/emailAddress.mp3';
+            if (voice2) {
+                audioFile = 'Recordings/emailAddressVoice2.mp3';
+            }
+            break;
+        case 6:
+            audioFile = 'Recordings/fullOrPartial.mp3';
+            if (voice2) {
+                audioFile = 'Recordings/fullOrPartialVoice2.mp3';
+            }
+            break;
+        case 7:
+            audioFile = 'Recordings/burialLocation.mp3';
+            if (voice2) {
+                audioFile = 'Recordings/burialLocationVoice2.mp3';
+            }
+            console.log("Playing recording 7");
+            break;
+        case 8:
+            audioFile = 'Recordings/casketMaterial.mp3';
+            if (voice2) {
+                audioFile = 'Recordings/casketMaterialVoice2.mp3';
+            }
+            break;
+        case 9:
+            audioFile = 'Recordings/marker.mp3';
+            if (voice2) {
+                audioFile = 'Recordings/markerVoice2.mp3';
+            }
+            break;
+        default:
+            console.log("Invalid id");
     }
 
      // Create a new Audio object with the specified audio file source
@@ -210,4 +236,12 @@ function playRecording(id) {
 
      // Play the audio
      audio.play();
+}
+let voice2 = false;
+function changeVoice() {
+    if (voice2 == false) {
+        voice2 = true;
+        return;
+    }
+    voice2 = false;
 }
