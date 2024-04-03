@@ -115,16 +115,13 @@ function handleSubmitBurialChoices() {
     var burialArea = document.querySelector('input[name="burial-area"]:checked').value;
     var casketMaterial = document.querySelector('input[name="casket-material"]:checked').value;
     var markerOption = document.querySelector('input[name="marker-option"]:checked').value;
-    var plantOption = document.querySelector('input[name="plant-option"]:checked').value;
-    var gpsOption = document.querySelector('input[name="gps-option"]:checked').value;
+    
     // Store burial options values as object
     const burialOptions = {
         burialType,
         burialArea,
         casketMaterial,
-        markerOption,
-        plantOption,
-        gpsOption
+        markerOption
     }
     // store user input values in local storage as Json string 
     localStorage.setItem('strBurialOptions',JSON.stringify(burialOptions));
