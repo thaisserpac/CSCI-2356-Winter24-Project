@@ -136,12 +136,10 @@
                 <input type="email" id="email" name="email" placeholder="xxxx@xxxx.xxxx" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"
                         title="Please Enter A Valid Email Address." class="text-black" required><br><br>
             </div>
-            </form>
-            <!-- the submit button to store it in local storage and display it  -->
-            <input type="submit" value="Submit" onclick="handleSubmitUserInfo()" class="bg-gray-400 w-60 p-2"><br>
-        
+          
+
             <h3>Natural Burial Options:</h3>
-            <form id="nb-options-form">
+           
 
                 <legend>
                     <!-- listen button -->
@@ -216,8 +214,9 @@
                 <label><input type="radio" name="marker-option" value="GPS"> GPS </label><br>
                 <label><input type="radio" name="marker-option" value="markerOther"> Other</label><br>
 
+                <input type="submit" value="Submit" onclick="handleSubmit()" class="bg-gray-400 p-2 w-60"><br>
             </form>
-                <input type="submit" value="Submit" onclick="handleSubmitBurialChoices()" class="bg-gray-400 p-2 w-60"><br>
+                
             <!-- this div is for the last section (the one for displaying user inputs) -->
     <div class="displayed-text" id="displayInputs" >
     </div>

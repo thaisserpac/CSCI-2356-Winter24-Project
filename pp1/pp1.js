@@ -104,14 +104,18 @@ function modifiedDateFormat(value){
     return `${date.slice(0, 2)}-${date.slice(2, 4)}-${date.slice(4, 8)}`;
 }
 
-function handleSubmitUserInfo() {
+function handleSubmit() {
     // const values are given for name & birth_date & phone numbers & email 
     const nameInput = document.getElementById('full_name');
     const dateInput = document.getElementById('birth_date');
     const contactInput = document.getElementById('contact_info');
     const relativeInput = document.getElementById('relative_number');
     const emailInput = document.getElementById('email');
-
+    // Get all selected radio button values
+    const burialType = document.querySelector('input[name="burial-type"]:checked').value;
+    const burialArea = document.querySelector('input[name="burial-area"]:checked').value;
+    const casketMaterial = document.querySelector('input[name="casket-material"]:checked').value;
+    const markerOption = document.querySelector('input[name="marker-option"]:checked').value;
     // creating object to store input values, keys are userName & date & contact & relative & email, their values are used from const above
     const userInputValues = {
         userName: nameInput.value,
@@ -119,6 +123,10 @@ function handleSubmitUserInfo() {
         contact: contactInput.value,
         relative: relativeInput.value,
         email: emailInput.value,  
+        burialType,
+        burialArea,
+        casketMaterial,
+        markerOption
     }
     // store user input values in local storage as Json string 
     localStorage.setItem('strUserInputValues',JSON.stringify(userInputValues));
@@ -131,41 +139,21 @@ function handleSubmitUserInfo() {
     emailInput.value = '';
 }
 
-function handleSubmitBurialChoices() {
-    // Get all selected radio button values
-    var burialType = document.querySelector('input[name="burial-type"]:checked').value;
-    var burialArea = document.querySelector('input[name="burial-area"]:checked').value;
-    var casketMaterial = document.querySelector('input[name="casket-material"]:checked').value;
-    var markerOption = document.querySelector('input[name="marker-option"]:checked').value;
-    
-    // Store burial options values as object
-    const burialOptions = {
-        burialType,
-        burialArea,
-        casketMaterial,
-        markerOption
-    }
-    // store user input values in local storage as Json string 
-    localStorage.setItem('strBurialOptions',JSON.stringify(burialOptions));
-
-}
-
 // second function is to handle displaying stored input on the last div
 function handleDisplay() {
     //  retreiving user inputs values from local storage
     // using json.parse to change the values back from string to js object
     userObj = JSON.parse(localStorage.getItem('strUserInputValues'));
-    burialOptions = JSON.parse(localStorage.getItem('strBurialOptions'));
     // displaying inputs on the last div using userobj object & burialOptions object
     document.getElementById('displayInputs').innerHTML = `User Name: ${userObj.userName}<br>
         Date of Birth: ${userObj.date}<br> 
         Phone Number: ${userObj.contact}<br> 
         Relative Phone Number: ${userObj.relative}<br> 
         Email Address: ${userObj.email}<br>
-        Burial Type: ${burialOptions.burialType}<br>
-        Burial Area: ${burialOptions.burialArea}<br>
-        Casket Material: ${burialOptions.casketMaterial}<br>
-        Marker Option: ${burialOptions.markerOption}<br>` ;
+        Burial Type: ${userObj.burialType}<br>
+        Burial Area: ${userObj.burialArea}<br>
+        Casket Material: ${userObj.casketMaterial}<br>
+        Marker Option: ${userObj.markerOption}<br>` ;
 
 }
 
