@@ -14,214 +14,292 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project</title>
+    <title>Natural Burial</title>
     <!-- linking tailwind for icon -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- linking bootstrap for button style -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="pp1.css">
-    <script src="pp1.js"></script>
-    
+    <!-- Linking css file for minimum styling -->
+    <link rel="stylesheet" href="pp2.css">
+    <!-- linking the tailwind.config js file -->
+    <script src="tailwind.config.js"></script>
+    <!-- linking the pp1Func.js file which adds functionality to the page -->
+    <script src="pp2.js"></script>
+
 </head>
 
-<body id="main" class="flex justify-center text-black-600 dark:text-white-100 dark:bg-neutral-900">
+<body id="main" class="flex flex-col items-center text-9xl text-black-600 dark:text-white-100 dark:bg-neutral-900">
     <!-- Dark mode / Light mode toggle -->
-    <div>
-    <button class="m-12 h-24 px-6" onclick="toggleDarkMode()">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="m-12 h-24 px-6 dark:text-white">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
-          </svg>
-      </button>   
-      <!-- Male Voice / Female Voice toggle -->
-        <button onclick="changeVoice()">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="m-12 h-24 px-6 dark:text-white">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+    <div class="flex items-center space-x-10">
+        <button class="bg-yellow-500" onclick="toggleDarkMode()">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="m-12 h-24 dark:text-white inline-block align-middle">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
             </svg>
-        </button> 
-        </div>
-    <section id="info-options" class="text-black-600 dark:text-white dark:bg-neutral-900">
-        
-        <h3>Personal Information:</h3>
-        <form id="personal-info-form">
-            <div>
-                <!-- listen button -->
-                <button type="button" class="btn btn-primary" onclick="playRecording(1)">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                         stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
-                    </svg>
-                </button>
-
-                <label for="full_name">Enter your Full Name:</label>
-                <!-- using input tag so the user input his/her first and last name, type is text, id is to be used in js file -->
-                <!-- pattern is used to make sure that the input should be letters only (lower and upper cases) -->
-                <!-- title is used to give this msg in case the input does not match the pattern -->
-                <!-- required attribute is used to make sure to do not submit the form (using form tag) if the input is empty or does not match the pattern -->
-                <input type="text" id="full_name" name="full_name" pattern="[A-Za-z\s]+"
-                       title="Please enter letters only." required class="text-black"><br><br>
-            </div>
-            <!-- this div is for the second section (Date of Birth) -->
-            <div>
-                <!-- listen button -->
-                <button type="button" class="btn btn-primary" onclick="playRecording(2)">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                         stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
-                    </svg>
-                </button>
-
-                <!-- using label tag for the second section "Date of Birth" -->
-                <label for="birth_date">Date of Birth:</label>
-                <!-- using input tag so the user input his/her date of birth, id is to be used in js file  -->
-                <!-- on keydown is used to add the dashes to the input between day-month-year using functions on js  -->
-                <!-- required attribute is used to make sure to do not submit the form (using form tag) if the input is empty or does not match the pattern -->
-                <input type="text" id="birth_date" name="birth_date" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}" placeholder="DD-MM-YYYY" onkeydown="dateFormat()" class="text-black" required><br><br>
-            </div>
-            <div>
-                <!-- listen button -->
-                <button type="button" class="btn btn-primary" onclick="playRecording(3)">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                         stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
-                    </svg>
-                </button>
-
-                <!-- using label tag as requested for the third section "Phone Number" -->
-                <label for="contact_info">Phone Number:</label>
-                <!-- using input tag so the user input his/her phone number, type is tel, it is to be used in js file -->
-                <!-- pattern is used to make sure that the input should be 10 digits only, on keydown is used to add the brackets and the dash to the input using functions on js  -->
-                <!-- title is used to give this msg in case the input does not match the pattern -->
-                <!-- required attribute is used to make sure to do not submit the form (using form tag) if the input is empty or does not match the pattern -->
-                <input type="tel" id="contact_info" name="contact_info" class="text-black" placeholder="(123) 456-7890"
-                       pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" title="Please enter digits only."
-                       onkeydown="phoneNumberFormat()" required><br><br>
-            </div>
-            <div>
-                <!-- listen button -->
-                <button type="button" class="btn btn-primary" onclick="playRecording(4)">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                         stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
-                    </svg>
-                </button>
-
-                <!-- using label tag as requested for the fourth section "Relative Phone Number" -->
-                <label for="relative_number">Relative Phone Number:</label>
-                <!-- exactly same as the last section (phone number) but with different id neame  -->
-                <input type="tel" id="relative_number" name="relative_number" placeholder="(123) 456-7890"
-                       pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" title="Please enter digits only."
-                       onkeydown="phoneNumberFormat()" class="text-black" required><br><br>
-            </div>
-            <div>
-                <!-- listen button -->
-                <button type="button" class="btn btn-primary" onclick="playRecording(5)">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                         stroke="currentColor" class="w-6 h-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
-                    </svg>
-                </button>
-                
-                <!-- using label tag as requested for the fifth section "Email" -->
-                <label for="email">Email:</label>
-                <!-- using input tag so the user input his/her email address, type is email, it is to be used in js file -->
-                <!-- pattern here takes any characters/digits then @ then again any characters/digits then . then 2 to 4 characters for TLD -->
-                <!-- title is used to give this msg in case the input does not match the pattern -->
-                <!-- required attribute is used to make sure to do not submit the form (using form tag) if the input is empty or does not match the pattern -->
-                <input type="email" id="email" name="email" placeholder="xxxx@xxxx.xxxx" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"
-                        title="Please Enter A Valid Email Address." class="text-black" required><br><br>
-            </div>
-          
-
-            <h3>Natural Burial Options:</h3>
-           
-
-                <legend>
-                    <!-- listen button -->
-                    <button type="button" class="btn btn-primary" onclick="playRecording(6)">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
-                        </svg>
-                    </button>
-                    <!-- label for the first prompt under the natural burial options -->
-                    <label for ="burial-type">Do you want a full or partial burial?</label>
-                </legend>
-                    <!-- input tag type radio for radio buttons beside the prompt response options -->
-                <label><input type="radio" name="burial-type" value="full"> Full</label> <br>
-                <label><input type="radio" name="burial-type" value="partial"> Partial</label><br>
-
-                <legend>
-                    <!-- listen button -->
-                    <button type="button" class="btn btn-primary" onclick="playRecording(7)">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
-                        </svg>
-                    </button>
-                    <!-- label for the second prompt under the natural burial options -->
-                    <label for ="burial-area">Where would you like to be buried?</label>
-                </legend>
-                    <!-- input tag type radio for radio buttons beside the prompt response options -->
-                
-                <label><input type="radio" name="burial-area" value="inField"> In a field</label> <br>
-                <label><input type="radio" name="burial-area" value="byWater"> By the water</label> <br>
-                <label><input type="radio" name="burial-area" value="withFamily"> With family</label> <br>
-                <label><input type="radio" name="burial-area" value="areaOther"> Other</label><br>
-                
-                <legend>
-                    <!-- listen button -->
-                    <button type="button" class="btn btn-primary" onclick="playRecording(8)">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
-                        </svg>
-                    </button>
-                    <!-- label for the third prompt under the natural burial options -->
-                    <label for ="casket-material">What is your preferred casket material?</label>
-                </legend>
-                    <!-- input tag type radio for radio buttons beside the prompt response options -->
-                <label><input type="radio" name="casket-material" value="willow"> Willow</label><br>
-                <label><input type="radio" name="casket-material" value="cloth"> Cloth</label><br>
-                <label><input type="radio" name="casket-material" value="bamboo"> Bamboo</label><br>
-                <label><input type="radio" name="casket-material" value="cardboard"> Cardboard</label><br>
-
-                <legend>
-                    <!-- listen button -->
-                    <button type="button" class="btn btn-primary" onclick="playRecording(9)">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
-                        </svg>
-                    </button>
-                    <!-- label for the fourth prompt under the natural burial options -->
-                    <label for ="marker-option">Which available marker option would you like?</label>
-                </legend>
-                    <!-- input tag type radio for radio buttons beside the prompt response options -->
-                <label><input type="radio" name="marker-option" value="stones"> Arrangement of Stones</label><br>
-                <label><input type="radio" name="marker-option" value="boulder"> Engraved Boulder</label><br>
-                <label><input type="radio" name="marker-option" value="wood"> Engraved Wood</label><br>
-                <label><input type="radio" name="marker-option" value="plant"> Plant </label><br>
-                <label><input type="radio" name="marker-option" value="GPS"> GPS </label><br>
-                <label><input type="radio" name="marker-option" value="markerOther"> Other</label><br>
-
-                <input type="submit" value="Submit" onclick="handleSubmit()" class="bg-gray-400 p-2 w-60"><br>
-            </form>
-                
-            <!-- this div is for the last section (the one for displaying user inputs) -->
-    <div class="displayed-text" id="displayInputs" >
+        </button>
+        <!-- Male Voice / Female Voice toggle -->
+        <button onclick="changeVoice()" class="bg-yellow-500">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="m-12 h-24 px-6 dark:text-white">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+            </svg>
+        </button>
     </div>
-    </section>
-    </body>
-    </html>
+    <section id="info-options" class="bg-gray-100 p-40 shadow-md text-black-600 dark:text-white dark:bg-neutral-900">
 
-    
+
+        <div class="text-9xl">Personal Information:<div><br>
+                <form id="personal-info-form" class="text-9xl">
+                    <div>
+                        <!-- listen button -->
+                        <button type="button" class="btn btn-primary" onclick="playRecording(1)">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-20 h-20">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+                            </svg>
+                        </button>
+
+                        <label for="full_name" class="text-9xl">Enter your Full Name:</label>
+                        <!-- using input tag so the user input his/her first and last name, type is text, id is to be used in js file -->
+                        <!-- pattern is used to make sure that the input should be letters only (lower and upper cases) -->
+                        <!-- title is used to give this msg in case the input does not match the pattern -->
+                        <!-- required attribute is used to make sure to do not submit the form (using form tag) if the input is empty or does not match the pattern -->
+                        <input type="text" id="full_name" name="full_name"
+                            class="border-4 border-gray-300 rounded-md p-2" pattern="[A-Za-z\s]+"
+                            title="Please enter letters only." required class="text-black"><br><br>
+                    </div>
+                    <!-- this div is for the second section (Date of Birth) -->
+                    <div>
+                        <!-- listen button -->
+                        <button type="button" class="btn btn-primary" onclick="playRecording(2)">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-20 h-20">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+                            </svg>
+                        </button>
+
+                        <!-- using label tag for the second section "Date of Birth" -->
+                        <label for="birth_date" class="text-9xl">Date of Birth:</label>
+                        <!-- using input tag so the user input his/her date of birth, id is to be used in js file  -->
+                        <!-- on keydown is used to add the dashes to the input between day-month-year using functions on js  -->
+                        <!-- required attribute is used to make sure to do not submit the form (using form tag) if the input is empty or does not match the pattern -->
+                        <input type="text" id="birth_date" name="birth_date"
+                            class="border-4 border-gray-300 rounded-md p-2" pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}"
+                            placeholder="DD-MM-YYYY" onkeydown="dateFormat()" class="text-black" required><br><br>
+                    </div>
+                    <div>
+                        <!-- listen button -->
+                        <button type="button" class="btn btn-primary" onclick="playRecording(3)">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-20 h-20">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+                            </svg>
+                        </button>
+
+                        <!-- using label tag as requested for the third section "Phone Number" -->
+                        <label for="contact_info" class="text-9xl">Phone Number:</label>
+                        <!-- using input tag so the user input his/her phone number, type is tel, it is to be used in js file -->
+                        <!-- pattern is used to make sure that the input should be 10 digits only, on keydown is used to add the brackets and the dash to the input using functions on js  -->
+                        <!-- title is used to give this msg in case the input does not match the pattern -->
+                        <!-- required attribute is used to make sure to do not submit the form (using form tag) if the input is empty or does not match the pattern -->
+                        <input type="tel" id="contact_info" name="contact_info"
+                            class="border-4 border-gray-300 rounded-md p-2 class=" text-black
+                            placeholder="(123) 456-7890" pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"
+                            title="Please enter digits only." onkeydown="phoneNumberFormat()" required><br><br>
+                    </div>
+                    <div>
+                        <!-- listen button -->
+                        <button type="button" class="btn btn-primary" onclick="playRecording(4)">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-20 h-20">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+                            </svg>
+                        </button>
+
+                        <!-- using label tag as requested for the fourth section "Relative Phone Number" -->
+                        <label for="relative_number" class="text-9xl">Relative Phone Number:</label>
+                        <!-- exactly same as the last section (phone number) but with different id neame  -->
+                        <input type="tel" id="relative_number" name="relative_number"
+                            class="border-4 border-gray-300 rounded-md p-2" placeholder="(123) 456-7890"
+                            pattern="\([0-9]{3}\) [0-9]{3}-[0-9]{4}" title="Please enter digits only."
+                            onkeydown="phoneNumberFormat()" class="text-black" required><br><br>
+                    </div>
+                    <div>
+                        <!-- listen button -->
+                        <button type="button" class="btn btn-primary" onclick="playRecording(5)">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-20 h-20">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+                            </svg>
+                        </button>
+
+                        <!-- using label tag as requested for the fifth section "Email" -->
+                        <label for="email" class="text-9xl">Email:</label>
+                        <!-- using input tag so the user input his/her email address, type is email, it is to be used in js file -->
+                        <!-- pattern here takes any characters/digits then @ then again any characters/digits then . then 2 to 4 characters for TLD -->
+                        <!-- title is used to give this msg in case the input does not match the pattern -->
+                        <!-- required attribute is used to make sure to do not submit the form (using form tag) if the input is empty or does not match the pattern -->
+                        <input type="email" id="email" name="email" class="border-4 border-gray-300 rounded-md p-2"
+                            placeholder="xxxx@xxxx.xxxx" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"
+                            title="Please Enter A Valid Email Address." class="text-black" required><br><br>
+                    </div>
+
+                    <div>Natural Burial Options:</div><br>
+
+                    <legend class="flex items-center ">
+                        <!-- listen button -->
+                        <button type="button" class="btn btn-primary" onclick="playRecording(6)">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-20 h-20">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+                            </svg>
+                        </button>
+                        <!-- label for the first prompt under the natural burial options -->
+                        <label for="burial-type" class="text-9xl">Do you want a full or partial burial?</label>
+                    </legend>
+                    <!-- input tag type radio for radio buttons beside the prompt response options -->
+                    <label for="full" class="text-9xl"><input type="radio" class="h-20 w-20" name="burial-type"
+                            value="full" class="text-9xl"> Full</label> <br>
+                    <label for="partial" class="text-9xl"><input type="radio" class="h-20 w-20" name="burial-type"
+                            value="partial"> Partial</label><br><br>
+
+                    <legend class="flex items-center">
+                        <!-- listen button -->
+                        <button type="button" class="btn btn-primary" onclick="playRecording(7)">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-20 h-20">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+                            </svg>
+                        </button>
+                        <!-- label for the second prompt under the natural burial options -->
+                        <label for="burial-area" class="text-9xl">Where would you like to be buried?</label>
+                    </legend>
+                    <!-- input tag type radio for radio buttons beside the prompt response options -->
+
+                    <label for="inField" class="text-9xl"><input type="radio" name="burial-area" value="inField"
+                            class="h-20 w-20"> In a field</label> <br>
+                    <label for="byWater" class="text-9xl"><input type="radio" name="burial-area" value="byWater"
+                            class="h-20 w-20"> By the water</label> <br>
+                    <label for="withFamily" class="text-9xl"><input type="radio" name="burial-area" value="withFamily"
+                            class="h-20 w-20"> With family</label> <br>
+                    <label class="flex items-center space-x-2 text-9xl">
+                        <span class="currentColor text-9xl">Other:</span>
+                        <input type="text" name="marker-option" value=""
+                            class=" text-9xl mt-0 block w-100 h-22 p-2 border-2 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500">
+                    </label><br>
+
+                    <legend class="flex items-center">
+                        <!-- listen button -->
+                        <button type="button" class="btn btn-primary" onclick="playRecording(8)">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-20 h-20">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+                            </svg>
+                        </button>
+                        <!-- label for the third prompt under the natural burial options -->
+                        <label for="casket-material" class="text-9xl">What is your preferred casket material?</label>
+                    </legend>
+
+                    <div class="option-grid">
+                        <!-- Example option with an image -->
+                        <div class="option">
+                            <img src="nbPictures/willowCasket.jpeg" alt="Willow">
+                            <label for="Willow" class="text-9xl"><input type="radio" name="casket-material"
+                                    value="willow" class="w-20 h-20"> Willow</label>
+                        </div>
+                        <div class="option">
+                            <img src="nbPictures/clothCasket.jpeg" alt="Cloth">
+                            <label for="Cloth" class="text-9xl"><input type="radio" name="casket-material" value="cloth"
+                                    class="w-20 h-20"> Cloth</label>
+                        </div>
+                        <div class="option">
+                            <img src="nbPictures/bambooCasket.jpeg" alt="Bamboo">
+                            <label for="Bamboo" class="text-9xl"><input type="radio" name="casket-material"
+                                    value="bamboo" class="w-20 h-20"> Bamboo</label>
+                        </div>
+                        <div class="option">
+                            <img src="nbPictures/cardboardCasket.png" alt="Cardboard">
+                            <label for="Cardboard" class="text-9xl"><input type="radio" name="casket-material"
+                                    value="cardboard" class="w-20 h-20"> Cardboard</label>
+                        </div>
+                    </div> <br>
+
+                    <legend class="flex items-center">
+                        <!-- listen button -->
+                        <button type="button" class="btn btn-primary" onclick="playRecording(9)">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-20 h-20">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z" />
+                            </svg>
+                        </button>
+                        <!-- label for the fourth prompt under the natural burial options -->
+                        <label for="marker-option" class="text-9xl">Which available marker option would you
+                            like?</label>
+                    </legend>
+                    <!-- input tag type radio for radio buttons beside the prompt response options -->
+                    <div class="option-grid">
+                        <!-- Example option with an image -->
+                        <div class="option">
+                            <img src="nbPictures/arrangementOfStones.jpeg" alt="Arrangement of Stones">
+                            <label for="stones" class="text-9xl"><input type="radio" name="marker-option" value="stones"
+                                    class="w-20 h-20"> Arrangement of
+                                Stones</label>
+                        </div>
+                        <div class="option">
+                            <img src="nbPictures/engravedBoulder.jpeg" alt="Engraved Boulder">
+                            <label for="boulder" class="text-9xl"><input type="radio" name="marker-option"
+                                    value="boulder" class="w-20 h-20"> Engraved Boulder</label>
+                        </div>
+                        <div class="option">
+                            <img src="nbPictures/engravedWood.jpeg" alt="Engraved Wood">
+                            <label for="wood" class="text-9xl"><input type="radio" name="marker-option" value="wood"
+                                    class="w-20 h-20"> Engraved Wood</label>
+                        </div>
+                        <div class="option">
+                            <img src="nbPictures/plant.jpg" alt="plant">
+                            <label for="plant" class="text-9xl"><input type="radio" name="marker-option" value="plant"
+                                    class="w-20 h-20"> Plant</label><br>
+                        </div>
+                        <div class="option">
+                            <img src="nbPictures/gps.png" alt="gps">
+                            <label for="gps" class="text-9xl"><input type="radio" name="marker-option" value="gps"
+                                    class="w-20 h-20"> GPS</label><br>
+                        </div>
+                        <div class="option">
+                            <label class="block mb-2 text-9xl">
+                                <span class="currentColor">Other:</span>
+                                <input type="text" name="marker-option" value=""
+                                    class="form-input mt-1 block w-100 h-22 p-2 border-2 border-gray-300 rounded-md shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                            </label>
+                        </div>
+
+                    </div> <br>
+
+                    <input type="submit" value="Submit" onclick="handleSubmit()" class="bg-gray-400 p-2 w-100"><br>
+                </form>
+                <br>
+
+                <!-- this div is for the last section (the one for displaying user inputs) -->
+                <div class="displayed-text" id="displayInputs">
+
+                </div>
+                <br>
+    </section>
+
+</body>
+
+
+
+</html>

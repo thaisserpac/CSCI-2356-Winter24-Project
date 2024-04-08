@@ -1,0 +1,34 @@
+/*
+    The purpose of this file is to add some basic,
+    and some neccessary style to make our web page
+    readable for all group members. 
+ 
+    author: Adam Rossi (Group leader), Jan Zubalski,
+            Thais Serpa Chaves, Jack Aroyan
+*/
+
+/* HTML elements */
+/* Adjusting for bigger larger text */
+section {
+    width: 95%;
+
+}
+
+
+/* classes */
+.option-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    
+}
+
+/* ids */
+/* empty */
+
+
+
+
+
+
+
+
